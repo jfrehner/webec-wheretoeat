@@ -1,13 +1,17 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,700italic,800);
+@import url(https://fonts.googleapis.com/css?family=Sonsie+One);
 
 * {
   font-family: 'Open Sans', sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+  margin: 5px;
+}
+
 .view {
   width: 100%;
   height: 90vh;
-  background-color: red;
 }
 
 nav {
@@ -21,7 +25,7 @@ nav {
   width: 100%;
 }
 
-.btn {
+.btn-nav {
   width: 33.3%;
   height: 100%;
   border: 0;
@@ -37,6 +41,70 @@ nav {
   transition: background-color 0.4s ease;
 }
 
-.btn:hover {
+.btn-nav:hover {
   background-color: #2D8ACC;
+}
+
+.btn-submit {
+  display: block;
+  width: 50%;
+  height: 40px;
+  border: 0;
+  padding: 0;
+  margin: 50px auto;
+  box-sizing: border-box;
+  background-color: red;
+  font-weight: 300;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+  transition: background-color 0.4s ease;
+}
+
+#wte-what h2 {
+  font-weight: 800;
+  font-size: 2.5em;
+  text-align: center;
+  margin-top: 0;
+}
+
+h3 {
+  text-align: center;
+  font-size: 1.5em;
+  font-style: italic;
+  margin-top: 0;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  height: 20px;
+  width: 100%;
+}
+
+td {
+  margin: 0 10px;
+}
+
+td.food-type-chooser {
+  padding-left: 10px;
+}
+
+.food-type {
+  font-size: 1.5em;
+  width: 100%;
+}
+
+.food-type label {
+  display: inline-block;
+  width: 100%;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+#wte-who-places {
+  margin: 0;
 }

@@ -16,11 +16,22 @@
 
     <main>
 
-
       <section id="wte-what" class="view">
-        <p>Choose</p>
-        <p>Choose</p>
-        <p>Choose</p>
+        <h2>Hungry?</h2>
+        <h3>Choose your food!</h3>
+        <form id="wte-what-form">
+          <table>
+            <tr>
+              <td class="food-type-chooser"><input type="checkbox" id="type-1"></input></td>
+              <td class="food-type"><label for="type-1">Meat</label></td>
+            </tr>
+            <tr>
+              <td class="food-type-chooser"><input type="checkbox" id="type-2"></input></td>
+              <td class="food-type"><label for="type-2">Fish</label></td>
+            </tr>
+          </table>
+          <button type="submit" class="btn-submit">Find Me Places!</button>
+        </form>
       </section>
 
       <section id="wte-where" class="view">
@@ -29,7 +40,8 @@
       </section>
 
       <section id="wte-who" class="view">
-        <ul>
+        <h3>These places have </br>what you want!</h3>
+        <ul id="wte-who-places">
           <li>Restaurant 1</li>
           <li>Restaurant 2</li>
         </ul>
@@ -37,7 +49,7 @@
 
 
       <nav>
-        <button id="wte-what-tab" class="btn">What</button><button id="wte-where-tab" class="btn">Where</button><button id="wte-who-tab" class="btn">Who</button>
+        <button id="wte-what-tab" class="btn-nav">What</button><button id="wte-where-tab" class="btn-nav">Where</button><button id="wte-who-tab" class="btn-nav">Who</button>
       </nav>
 
     </main>
