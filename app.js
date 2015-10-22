@@ -8,6 +8,10 @@ $(function() {
     var map = new google.maps.Map(document.getElementById("wte-where"), mapOptions);
     map.getZoom();
 
+    var iconUrl = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|0000FF|ffffff";
+    var markerOptions = { map: map, position: here, icon: iconUrl};
+    new google.maps.Marker(markerOptions);
+
     var placesSearchOptions = {location: here, radius: 300, types: ['restaurant'], keyword: 'Pizza'}
 
     var service = new google.maps.places.PlacesService(map);
@@ -17,7 +21,7 @@ $(function() {
         results.forEach((place) => {
           console.log(place);
 
-          var iconUrl = "http://chart.apis.google.com/chart=chst=d_map_pin_letter&chld=1|FF0000|ffffff";
+          var iconUrl = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|FF0000|ffffff";
           var markerOptions = { map: map, position: place.geometry.location, icon: iconUrl};
           new google.maps.Marker(markerOptions);
 
