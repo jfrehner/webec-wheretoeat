@@ -41,6 +41,10 @@ nav {
   transition: background-color 0.4s ease;
 }
 
+.btn-nav.active {
+  background-color: #2D8ACC;
+}
+
 .btn-nav:hover {
   background-color: #2D8ACC;
 }
@@ -103,6 +107,7 @@ td.food-type-chooser {
   width: 100%;
   padding-left: 10px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 #wte-who-places {
