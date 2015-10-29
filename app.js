@@ -65,4 +65,14 @@ $(function() {
   }
 
   showView(0);
+
+  /**
+  * Change class of an food-type if user clicks on it.
+  */
+  $('div.food-type label').on('click', (e) => {
+    var row = $(e.target).parent().parent();
+    row.toggleClass('selected');
+  });
+
+
 });
