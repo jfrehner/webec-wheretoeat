@@ -4,18 +4,20 @@
     <title>Where To Eat?</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <!-- Load the stylesheets, including a normalize.css -->
     <link rel="stylesheet" type="text/css" href="normalize.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
+    <!-- Load all the javascript-files -->
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensors=true&v=3"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="app.js"></script>
 
   </head>
   <body>
-
     <main>
 
+      <!-- The view for the "What", where a user can choose a food-type -->
       <section id="wte-what" class="view">
         <h2>Hungry?</h2>
         <h3>Choose your food!</h3>
@@ -39,22 +41,23 @@
         </form>
       </section>
 
+      <!-- The view for the "Where", where all the places providing the chosen food
+           are displayed on a google map -->
       <section id="wte-where" class="view">
       </section>
 
+      <!-- The view for the "Who", That lists all places by name that provide
+           the chosen food. -->
       <section id="wte-who" class="view">
         <h3>These places have </br>what you want!</h3>
         <ol id="wte-who-places">
         </ol>
       </section>
 
-
       <nav>
         <button id="wte-what-tab" class="btn-nav active">What</button><button id="wte-where-tab" class="btn-nav">Where</button><button id="wte-who-tab" class="btn-nav">Who</button>
       </nav>
 
     </main>
-
-
   </body>
 </html>
