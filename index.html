@@ -20,16 +20,16 @@
         <h2>Hungry?</h2>
         <h3>Choose your food!</h3>
         <form id="wte-what-form">
-          <table>
-            <tr>
-              <td class="food-type-chooser"><input type="checkbox" id="type-1"></input></td>
-              <td class="food-type"><label for="type-1">Meat</label></td>
-            </tr>
-            <tr>
-              <td class="food-type-chooser"><input type="checkbox" id="type-2"></input></td>
-              <td class="food-type"><label for="type-2">Fish</label></td>
-            </tr>
-          </table>
+          <div id="foods">
+            <div class="food-type-row">
+              <div class="food-type-chooser"><input type="checkbox" id="type-1"></input></div>
+              <div class="food-type"><label for="type-1">Meat</label></div>
+            </div>
+            <div class="food-type-row">
+              <div class="food-type-chooser"><input type="checkbox" id="type-2"></input></div>
+              <div class="food-type"><label for="type-2">Fish</label></div>
+            </div>
+          </div>
           <button type="submit" class="btn-submit">Find Me Places!</button>
         </form>
       </section>
