@@ -8,6 +8,15 @@ $(function() {
   var WHERE_CONTENT = $("#wte-where");
   var WHO_CONTENT = $("#wte-who");
 
+  var MAP_WAS_INITIALIZED = false;
+
+  var initMap = function() {
+    if (!MAP_WAS_INITIALIZED) {
+      window.navigator.geolocation.getCurrentPosition(loadMapWithLocation);
+      MAP_WAS_INITIALIZED = true;
+    }
+  };
+
   var loadMapWithLocation = function(position) {
     var here = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     var mapOptions = {center: here, zoom: 15};
@@ -38,14 +47,12 @@ $(function() {
       } else {
         console.log("Error requesting places");
       }
-    })
+    });
   };
 
   var updateWho = function(place) {
     $("#wte-who-places").append('', '<li>' + place.name + '</li>');
   };
-
-  window.navigator.geolocation.getCurrentPosition(loadMapWithLocation);
 
   /**
   * Navigation
@@ -67,13 +74,20 @@ $(function() {
     WHAT_CONTENT.hide();
     WHERE_CONTENT.hide();
     WHO_CONTENT.hide();
+    WHAT_TAB.removeClass('active');
+    WHERE_TAB.removeClass('active');
+    WHO_TAB.removeClass('active');
 
     if (view === 0) {
       WHAT_CONTENT.show();
+      WHAT_TAB.addClass('active');
     } else if (view === 1) {
       WHERE_CONTENT.show();
+      WHERE_TAB.addClass('active');
+      initMap();
     } else {
       WHO_CONTENT.show();
+      WHO_TAB.addClass('active');
     }
   };
 
@@ -86,6 +100,4 @@ $(function() {
     var row = $(e.target).parent().parent();
     row.toggleClass('selected');
   });
-
-
 });
