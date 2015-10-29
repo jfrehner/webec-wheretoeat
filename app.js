@@ -24,26 +24,34 @@ $(function() {
     var map = new google.maps.Map(document.getElementById("wte-where"), mapOptions);
     map.getZoom();
 
-    var iconUrl = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|0000FF|ffffff";
+    var iconUrl = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=0|0000FF|ffffff";
     var markerOptions = { map: map, position: here, icon: iconUrl};
     new google.maps.Marker(markerOptions);
 
-    var placesSearchOptions = {location: here, radius: 300, types: ['restaurant'], keyword: 'Pizza'};
+    var food = '';
+
+    $('div#foods').children('.selected').each(function() {
+      food = $(this).find('.food-type').attr('id');
+    });
+
+    var placesSearchOptions = {location: here, radius: 300, types: ['restaurant'], keyword: food};
 
     var service = new google.maps.places.PlacesService(map);
 
     service.nearbySearch(placesSearchOptions, function(results, status) {
       if (status === "OK") {
         $("#wte-who-places").empty();
-        results.forEach(function(place) {
+        results.forEach(function(place, index) {
           console.log(place);
 
           updateWho(place);
-          var iconUrl = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|FF0000|ffffff";
+          var iconUrl = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=" + (index + 1) + "|FF0000|ffffff";
           var markerOptions = { map: map, position: place.geometry.location, icon: iconUrl};
           new google.maps.Marker(markerOptions);
 
         });
+      } else if(status === "ZERO_RESULTS") {
+        console.log("No results found");
       } else {
         console.log("Error requesting places");
       }
@@ -94,9 +102,22 @@ $(function() {
   showView(0);
 
   /**
+  * Find all selected foot-types
+  */
+  $('.btn-submit').on('click', function(e) {
+    e.preventDefault();
+    MAP_WAS_INITIALIZED = false;
+    showView(1);
+  });
+
+
+  /**
   * Change class of an food-type if user clicks on it.
   */
   $('div.food-type label').on('click', function(e) {
+    $('div.food-type-row').each(function() {
+      $(this).removeClass('selected');
+    });
     var row = $(e.target).parent().parent();
     row.toggleClass('selected');
   });
