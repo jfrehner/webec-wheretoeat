@@ -1,15 +1,51 @@
 $(function() {
   var ACTIVE_VIEW = -1;
 
+
+  /**
+  * Selector for the What-Tab.
+  */
   var WHAT_TAB = $("#wte-what-tab");
+
+
+  /**
+  * Selector for the Where-Tab.
+  */
   var WHERE_TAB = $("#wte-where-tab");
+
+
+  /**
+  * Selector for the Who-Tab.
+  */
   var WHO_TAB = $("#wte-who-tab");
+
+
+  /**
+  * Selector for the What-View.
+  */
   var WHAT_CONTENT = $("#wte-what");
+
+
+  /**
+  * Selector for the Where-View.
+  */
   var WHERE_CONTENT = $("#wte-where");
+
+
+  /**
+  * Selector for the Who-View.
+  */
   var WHO_CONTENT = $("#wte-who");
 
+
+  /**
+  * Booelan that indicats if the google map has been initialized or not.
+  */
   var MAP_WAS_INITIALIZED = false;
 
+  /**
+  * Initializes the google-map if it hasn't been done yet.
+  */
   var initMap = function() {
     if (!MAP_WAS_INITIALIZED) {
       window.navigator.geolocation.getCurrentPosition(loadMapWithLocation);
@@ -17,6 +53,10 @@ $(function() {
     }
   };
 
+
+  /**
+  * Gets the goole map and the markers.
+  */
   var loadMapWithLocation = function(position) {
     var here = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     var mapOptions = {center: here, zoom: 15};
@@ -57,14 +97,18 @@ $(function() {
     });
   };
 
+
+  /**
+  * Updates the "Who"-List of restaurants that provide the selected food-type.
+  */
   var updateWho = function(place) {
-    console.log(place === '');
     $("#wte-who-places").append('', '<li>' + place.name + '</li>');
   };
 
+
   /**
   * Navigation
-  * Our app has 3 states
+  * Our app has 3 states: (0) What (1) Where (2) Who
   */
   WHAT_TAB.on("click", function() {showView(0)});
   WHERE_TAB.on("click", function() {showView(1)});
@@ -101,8 +145,9 @@ $(function() {
 
   showView(0);
 
+
   /**
-  * Find all selected foot-types
+  * Show Where-View when user clicks on the "Find Me Places!"-Button.
   */
   $('.btn-submit').on('click', function(e) {
     e.preventDefault();
@@ -112,7 +157,7 @@ $(function() {
 
 
   /**
-  * Change class of an food-type if user clicks on it.
+  * Change class of an food-type if user clicks on the food-type-rectangle.
   */
   $('div.food-type p').on('click', function(e) {
     $('div.food-type-row').each(function() {
