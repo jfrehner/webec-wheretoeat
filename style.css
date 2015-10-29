@@ -80,21 +80,29 @@ h3 {
   margin-top: 0;
 }
 
-table {
+div#foods {
   width: 100%;
 }
 
-tr {
-  height: 20px;
-  width: 100%;
+div.food-type-row {
+  height: 50px;
+  width: 50%;
+  color: #aaa;
 }
 
-td {
+div.food-type-row div {
   margin: 0 10px;
+  text-align: center;
 }
 
-td.food-type-chooser {
+div.food-type-chooser {
   padding-left: 10px;
+  display: none;
+}
+
+div.food-type-row.selected {
+  color: #000;
+  background-color: #38ACFF;
 }
 
 .food-type {
