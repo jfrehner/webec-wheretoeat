@@ -30,9 +30,7 @@ $(function() {
 
     var food = '';
 
-    $('div#foods').children('.selected').each(function() {
-      food = $(this).find('.food-type').attr('id');
-    });
+    food = $('div#foods .food-type-row.selected .food-type').attr('id');
 
     var placesSearchOptions = {location: here, radius: 300, types: ['restaurant'], keyword: food};
 
@@ -52,6 +50,7 @@ $(function() {
         });
       } else if(status === "ZERO_RESULTS") {
         console.log("No results found");
+        $("#wte-who-places").append('Unfortunately, there\'s no such restaurant-type near you :(');
       } else {
         console.log("Error requesting places");
       }
@@ -59,6 +58,7 @@ $(function() {
   };
 
   var updateWho = function(place) {
+    console.log(place === '');
     $("#wte-who-places").append('', '<li>' + place.name + '</li>');
   };
 
@@ -114,11 +114,11 @@ $(function() {
   /**
   * Change class of an food-type if user clicks on it.
   */
-  $('div.food-type label').on('click', function(e) {
+  $('div.food-type p').on('click', function(e) {
     $('div.food-type-row').each(function() {
       $(this).removeClass('selected');
     });
-    var row = $(e.target).parent().parent();
-    row.toggleClass('selected');
+    var el = $(e.target).parent().parent();
+    el.toggleClass('selected');
   });
 });
