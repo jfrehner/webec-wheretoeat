@@ -39,9 +39,10 @@ $(function() {
 
 
   /**
-  * Booelan that indicats if the google map has been initialized or not.
+  * Boolean that indicates if the google map has been initialized or not.
   */
   var MAP_WAS_INITIALIZED = false;
+
 
   /**
   * Initializes the google-map if it hasn't been done yet.
@@ -55,7 +56,7 @@ $(function() {
 
 
   /**
-  * Gets the goole map and the markers.
+  * Gets the google map and the markers.
   */
   var loadMapWithLocation = function(position) {
     var here = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -68,9 +69,7 @@ $(function() {
     var markerOptions = { map: map, position: here, icon: iconUrl};
     new google.maps.Marker(markerOptions);
 
-    var food = '';
-
-    food = $('div#foods .food-type-row.selected .food-type').attr('id');
+    var food = $('div#foods .food-type-row.selected .food-type').attr('id');
 
     var placesSearchOptions = {location: here, radius: 300, types: ['restaurant'], keyword: food};
 
